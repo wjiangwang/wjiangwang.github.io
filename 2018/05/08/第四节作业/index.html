@@ -9,8 +9,10 @@
     
     <meta name="author" content="wwj">
     
-    <meta name="description" content="几个简单的命令使用方法## ls ## (list directory contents) 
-  列出目标目录中所有的子目录和文件,此外还有ls -a (list all)列出所有文件，包括隐藏的。 ls -l，罗列出具体信息，时间、大小等等">
+    <meta name="description" content="几个简单的命令使用方法ls
+ls(list directory contents)列出目标目录中所有的子目录和文件
+ls -a(list all)列出所有文件，包括隐藏的。
+ls -l(use a long listing format)，罗列出具体信息，时间、大小等等。catcat(concate">
     
     
     
@@ -74,7 +76,7 @@
     </p>
   <p class="article-time">
     <time datetime="2018-05-08T12:48:06.000Z" itemprop="datePublished">2018-05-08</time>
-    Updated:<time datetime="2018-05-08T13:14:01.533Z" itemprop="dateModified">2018-05-08</time>
+    Updated:<time datetime="2018-05-08T14:35:34.453Z" itemprop="dateModified">2018-05-08</time>
     
   </p>
 </header>
@@ -83,12 +85,25 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
-		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#几个简单的命令使用方法"><span class="toc-number">1.</span> <span class="toc-text">几个简单的命令使用方法</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#几个简单的命令使用方法"><span class="toc-number">1.</span> <span class="toc-text">几个简单的命令使用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ls"><span class="toc-number">1.1.</span> <span class="toc-text">ls</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cat"><span class="toc-number">1.2.</span> <span class="toc-text">cat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mv"><span class="toc-number">1.3.</span> <span class="toc-text">mv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#touch"><span class="toc-number">1.4.</span> <span class="toc-text">touch</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#explainshell-com网站"><span class="toc-number">2.</span> <span class="toc-text">explainshell.com网站</span></a></li></ol>
 		</div>
 		
-		<h1 id="几个简单的命令使用方法"><a href="#几个简单的命令使用方法" class="headerlink" title="几个简单的命令使用方法"></a>几个简单的命令使用方法</h1><pre><code>## ls ## (list directory contents) 
-  列出目标目录中所有的子目录和文件,此外还有ls -a (list all)列出所有文件，包括隐藏的。 ls -l，罗列出具体信息，时间、大小等等
-</code></pre>  
+		<h2 id="几个简单的命令使用方法"><a href="#几个简单的命令使用方法" class="headerlink" title="几个简单的命令使用方法"></a>几个简单的命令使用方法</h2><h3 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h3><ul>
+<li><code>ls</code>(list directory contents)列出目标目录中所有的子目录和文件</li>
+<li><code>ls -a</code>(list all)列出所有文件，包括隐藏的。</li>
+<li><code>ls -l</code>(use a long listing format)，罗列出具体信息，时间、大小等等。<h3 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h3><code>cat</code>(concatenate files and print on the standard output)命令的简单用途有: </li>
+<li>一次显示整个文件。<code>cat filename</code> </li>
+<li>从键盘创建一个文件。 <code>cat &gt; filename</code>  只能创建新文件,不能编辑已有文件. </li>
+<li>将几个文件合并为一个文件：<code>cat file1 file2 &gt; file</code><h3 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h3><code>mv</code>(move (rename) files)用来为文件或目录改名、或将文件或目录移入其它位置。 </li>
+<li>将文件 aaa 更名为 bbb: <code>mv aaa bbb</code></li>
+<li>将aaa.txt放入bbb目录中。如果bbb目录不存在，则该命令将aaa改名为bbb:<code>mv aaa bbb</code> </li>
+<li><code>mv -f</code>在mv操作要覆盖某已有的目标文件时不给任何指示</li>
+<li><code>mv -i</code>若指定目录已有同名文件，则先询问是否覆盖旧文件。<h3 id="touch"><a href="#touch" class="headerlink" title="touch"></a>touch</h3><code>touch</code>(change file timestamps)命令用于修改文件或者目录的时间属性，包括存取时间和更改时间。若文件不存在，系统会建立一个新的文件。</li>
+<li><code>touch file</code>创建一个名为“file”的新的空白文件,也是我最常用的功能。</li>
+<li><code>touch testfile</code>修改文件”testfile”的时间属性为当前系统时间。（还不太懂具体作用）<h2 id="explainshell-com网站"><a href="#explainshell-com网站" class="headerlink" title="explainshell.com网站"></a>explainshell.com网站</h2></li>
+<li>当我们不知道某个命令是什么意思的时候，又不愿意去查看man手册的时候，就可以使用这个网站了，简洁明了<br><img src="https://images2018.cnblogs.com/blog/1147480/201803/1147480-20180316162220503-1381168590.png" alt="QAQ" title="explainshell.com"></li>
+</ul>
+  
 	</div>
 		<footer class="article-footer clearfix">
 
@@ -115,7 +130,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
-  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#几个简单的命令使用方法"><span class="toc-number">1.</span> <span class="toc-text">几个简单的命令使用方法</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#几个简单的命令使用方法"><span class="toc-number">1.</span> <span class="toc-text">几个简单的命令使用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ls"><span class="toc-number">1.1.</span> <span class="toc-text">ls</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cat"><span class="toc-number">1.2.</span> <span class="toc-text">cat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mv"><span class="toc-number">1.3.</span> <span class="toc-text">mv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#touch"><span class="toc-number">1.4.</span> <span class="toc-text">touch</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#explainshell-com网站"><span class="toc-number">2.</span> <span class="toc-text">explainshell.com网站</span></a></li></ol>
   </div>
 
 <div id="asidepart">
