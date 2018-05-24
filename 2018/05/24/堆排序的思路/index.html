@@ -4,15 +4,14 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>简单的命令 | wwj-blog</title>
+    <title>堆排序的思路 | wwj-blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="wwj">
     
-    <meta name="description" content="几个简单的命令使用方法ls
-ls(list directory contents)列出目标目录中所有的子目录和文件
-ls -a(list all)列出所有文件，包括隐藏的。
-ls -l(use a long listing format)，罗列出具体信息，时间、大小等等。catcat(concate">
+    <meta name="description" content="堆排序思路
+
+&amp;emsp;&amp;emsp;每次都取最大堆堆顶的元素，将其放在序列最后面，然后将剩余的元素重新调整为最大堆，依次类推，最终得到排序的序列。1.把数组依次放入一个完全二叉树中。2.从最后一个非叶子节点（第4层最后一个点）开始，调整成最大堆。下方是8个最大堆。3.继续往上以3层为父节点，调整成">
     
     
     
@@ -68,15 +67,15 @@ ls -l(use a long listing format)，罗列出具体信息，时间、大小等等
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2018/05/08/第四节作业/" title="简单的命令" itemprop="url">简单的命令</a>
+      <a href="/2018/05/24/堆排序的思路/" title="堆排序的思路" itemprop="url">堆排序的思路</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://yoursite.com" title="wwj">wwj</a>
     </p>
   <p class="article-time">
-    <time datetime="2018-05-08T12:48:06.000Z" itemprop="datePublished">2018-05-08</time>
-    Updated:<time datetime="2018-05-09T08:39:04.965Z" itemprop="dateModified">2018-05-09</time>
+    <time datetime="2018-05-24T10:45:11.000Z" itemprop="datePublished">2018-05-24</time>
+    Updated:<time datetime="2018-05-24T12:21:20.985Z" itemprop="dateModified">2018-05-24</time>
     
   </p>
 </header>
@@ -85,23 +84,14 @@ ls -l(use a long listing format)，罗列出具体信息，时间、大小等等
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#几个简单的命令使用方法"><span class="toc-number">1.</span> <span class="toc-text">几个简单的命令使用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ls"><span class="toc-number">1.1.</span> <span class="toc-text">ls</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cat"><span class="toc-number">1.2.</span> <span class="toc-text">cat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mv"><span class="toc-number">1.3.</span> <span class="toc-text">mv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#touch"><span class="toc-number">1.4.</span> <span class="toc-text">touch</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#explainshell-com网站"><span class="toc-number">2.</span> <span class="toc-text">explainshell.com网站</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#堆排序思路"><span class="toc-number">1.</span> <span class="toc-text">堆排序思路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#emsp-emsp-每次都取最大堆堆顶的元素，将其放在序列最后面，然后将剩余的元素重新调整为最大堆，依次类推，最终得到排序的序列。"><span class="toc-number">2.</span> <span class="toc-text">  每次都取最大堆堆顶的元素，将其放在序列最后面，然后将剩余的元素重新调整为最大堆，依次类推，最终得到排序的序列。</span></a></li></ol>
 		</div>
 		
-		<h2 id="几个简单的命令使用方法"><a href="#几个简单的命令使用方法" class="headerlink" title="几个简单的命令使用方法"></a>几个简单的命令使用方法</h2><h3 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h3><ul>
-<li><code>ls</code>(list directory contents)列出目标目录中所有的子目录和文件</li>
-<li><code>ls -a</code>(list all)列出所有文件，包括隐藏的。</li>
-<li><code>ls -l</code>(use a long listing format)，罗列出具体信息，时间、大小等等。<h3 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h3><code>cat</code>(concatenate files and print on the standard output)命令的简单用途有: </li>
-<li>一次显示整个文件。<code>cat filename</code> </li>
-<li>从键盘创建一个文件。 <code>cat &gt; filename</code>  只能创建新文件,不能编辑已有文件. </li>
-<li>将几个文件合并为一个文件：<code>cat file1 file2 &gt; file</code><h3 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h3><code>mv</code>(move (rename) files)用来为文件或目录改名、或将文件或目录移入其它位置。 </li>
-<li>将文件 aaa 更名为 bbb: <code>mv aaa bbb</code></li>
-<li>将aaa.txt放入bbb目录中。如果bbb目录不存在，则该命令将aaa改名为bbb:<code>mv aaa bbb</code> </li>
-<li><code>mv -f</code>在mv操作要覆盖某已有的目标文件时不给任何指示</li>
-<li><code>mv -i</code>若指定目录已有同名文件，则先询问是否覆盖旧文件。<h3 id="touch"><a href="#touch" class="headerlink" title="touch"></a>touch</h3><code>touch</code>(change file timestamps)命令用于修改文件或者目录的时间属性，包括存取时间和更改时间。若文件不存在，系统会建立一个新的文件。</li>
-<li><code>touch file</code>创建一个名为“file”的新的空白文件,也是我最常用的功能。</li>
-<li><code>touch testfile</code>修改文件”testfile”的时间属性为当前系统时间。（还不太懂具体作用）<h2 id="explainshell-com网站"><a href="#explainshell-com网站" class="headerlink" title="explainshell.com网站"></a>explainshell.com网站</h2></li>
-<li>当我们不知道某个命令是什么意思的时候，又不愿意去查看man手册的时候，就可以使用这个网站了，简洁明了<br><img src="https://images2018.cnblogs.com/blog/1147480/201803/1147480-20180316162220503-1381168590.png" alt="QAQ" title="explainshell.com"></li>
+		<h4 id="堆排序思路"><a href="#堆排序思路" class="headerlink" title="堆排序思路"></a>堆排序思路</h4><hr>
+
+<h4 id="emsp-emsp-每次都取最大堆堆顶的元素，将其放在序列最后面，然后将剩余的元素重新调整为最大堆，依次类推，最终得到排序的序列。"><a href="#emsp-emsp-每次都取最大堆堆顶的元素，将其放在序列最后面，然后将剩余的元素重新调整为最大堆，依次类推，最终得到排序的序列。" class="headerlink" title="&emsp;&emsp;每次都取最大堆堆顶的元素，将其放在序列最后面，然后将剩余的元素重新调整为最大堆，依次类推，最终得到排序的序列。"></a>&emsp;&emsp;每次都取最大堆堆顶的元素，将其放在序列最后面，然后将剩余的元素重新调整为最大堆，依次类推，最终得到排序的序列。</h4><p>1.把数组依次放入一个完全二叉树中。<br><a href="https://i.loli.net/2018/05/24/5b0699d948dc9.png" target="_blank" rel="noopener"><img src="https://i.loli.net/2018/05/24/5b0699d948dc9.png" alt="堆排序-1.png"></a><br>2.从最后一个非叶子节点（第4层最后一个点）开始，调整成最大堆。下方是8个最大堆。<br><a href="https://i.loli.net/2018/05/24/5b069eabb5795.png" target="_blank" rel="noopener"><img src="https://i.loli.net/2018/05/24/5b069eabb5795.png" alt="堆排序-2.png"></a><br>3.继续往上以3层为父节点，调整成最大堆。<font color="red">这时的调整会打乱原有的8个最大堆结构，需要对打乱的部分进行重新调整。</font><br><a href="https://i.loli.net/2018/05/24/5b06a0fd483ec.png" target="_blank" rel="noopener"><img src="https://i.loli.net/2018/05/24/5b06a0fd483ec.png" alt="堆排序-3.png"></a><br>4.以此类推，向上调整。直到整个树变为最大堆。根节点为最大的数，将其与最大堆的最后一个数交换后去除放入数组的最后一位。<br><a href="https://i.loli.net/2018/05/24/5b06a2226143e.png" target="_blank" rel="noopener"><img src="https://i.loli.net/2018/05/24/5b06a2226143e.png" alt="堆排序-4.png"></a><br>5.继续进行调整，交换，如此反复进行，最终使得整个序列有序。</p>
+<ul>
+<li><a href="https://www.cs.usfca.edu/~galles/visualization/HeapSort.html" target="_blank" rel="noopener">可视化堆排序</a></li>
 </ul>
   
 	</div>
@@ -109,7 +99,7 @@ ls -l(use a long listing format)，罗列出具体信息，时间、大小等等
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/命令/">命令</a>
+  <span></span> <a href="/tags/堆排序/">堆排序</a>
   </div>
 
 
@@ -117,7 +107,7 @@ ls -l(use a long listing format)，罗列出具体信息，时间、大小等等
 
 <div class="article-share" id="share">
 
-  <div data-url="http://yoursite.com/2018/05/08/第四节作业/" data-title="简单的命令 | wwj-blog" data-tsina="" class="share clearfix">
+  <div data-url="http://yoursite.com/2018/05/24/堆排序的思路/" data-title="堆排序的思路 | wwj-blog" data-tsina="" class="share clearfix">
   </div>
 
 </div>
@@ -126,14 +116,14 @@ ls -l(use a long listing format)，罗列出具体信息，时间、大小等等
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2018/05/09/git简单命令/" title="git简单命令">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  git简单命令</span>
+
+<div class="next">
+<a href="/2018/05/19/CSS布局笔记/"  title="CSS布局笔记">
+ <strong>NEXT:</strong><br/> 
+ <span>CSS布局笔记
+</span>
 </a>
 </div>
-
 
 </nav>
 
@@ -143,7 +133,7 @@ ls -l(use a long listing format)，罗列出具体信息，时间、大小等等
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#几个简单的命令使用方法"><span class="toc-number">1.</span> <span class="toc-text">几个简单的命令使用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ls"><span class="toc-number">1.1.</span> <span class="toc-text">ls</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cat"><span class="toc-number">1.2.</span> <span class="toc-text">cat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mv"><span class="toc-number">1.3.</span> <span class="toc-text">mv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#touch"><span class="toc-number">1.4.</span> <span class="toc-text">touch</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#explainshell-com网站"><span class="toc-number">2.</span> <span class="toc-text">explainshell.com网站</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#堆排序思路"><span class="toc-number">1.</span> <span class="toc-text">堆排序思路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#emsp-emsp-每次都取最大堆堆顶的元素，将其放在序列最后面，然后将剩余的元素重新调整为最大堆，依次类推，最终得到排序的序列。"><span class="toc-number">2.</span> <span class="toc-text">  每次都取最大堆堆顶的元素，将其放在序列最后面，然后将剩余的元素重新调整为最大堆，依次类推，最终得到排序的序列。</span></a></li></ol>
   </div>
 
 <div id="asidepart">
