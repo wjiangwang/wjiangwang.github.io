@@ -1,0 +1,352 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>原型与原型链 | wwj-blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="wwj">
+    
+    <meta name="description" content="全局对象 windowECMAScript 规定全局对象叫做 global，但是浏览器把 window 作为全局对象（浏览器先存在的） window 就是一个哈希表，有很多属性。window 的属性就是全局变量。
+这些全局变量分为两种：
+一种是 ECMAScript 规定的123456global.">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="wwj-blog" title="wwj-blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="wwj-blog">wwj-blog</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/06/08/原型与原型链/" title="原型与原型链" itemprop="url">原型与原型链</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://yoursite.com" title="wwj">wwj</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2018-06-08T00:58:46.000Z" itemprop="datePublished">2018-06-08</time>
+    Updated:<time datetime="2018-06-08T02:11:20.840Z" itemprop="dateModified">2018-06-08</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#全局对象-window"><span class="toc-number">1.</span> <span class="toc-text">全局对象 window</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#n-1与n-new-Number-1-区别"><span class="toc-number">2.</span> <span class="toc-text">n=1与n = new Number(1)区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#proto-与-prototype"><span class="toc-number">3.</span> <span class="toc-text">__proto__ 与 prototype</span></a></li></ol>
+		</div>
+		
+		<h3 id="全局对象-window"><a href="#全局对象-window" class="headerlink" title="全局对象 window"></a>全局对象 window</h3><p>ECMAScript 规定全局对象叫做 global，但是浏览器把 window 作为全局对象（浏览器先存在的） <br><br>window 就是一个哈希表，有很多属性。<br><br>window 的属性就是全局变量。<br></p>
+<p>这些全局变量分为两种：<br></p>
+<p><strong>一种是 ECMAScript 规定的</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">global.parseInt</span><br><span class="line">global.parseFloat</span><br><span class="line">global.Number</span><br><span class="line">global.String</span><br><span class="line">global.Boolean</span><br><span class="line">global.Object</span><br></pre></td></tr></table></figure></p>
+<p><strong>一种是浏览器自己加的属性</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.alert</span><br><span class="line"><span class="built_in">window</span>.prompt</span><br><span class="line"><span class="built_in">window</span>.comfirm</span><br><span class="line"><span class="built_in">window</span>.</span><br><span class="line"><span class="built_in">window</span>.console.dir</span><br><span class="line"><span class="built_in">window</span>.document</span><br><span class="line"><span class="built_in">window</span>.document.createElement</span><br><span class="line"><span class="built_in">window</span>.docu</span><br></pre></td></tr></table></figure></p>
+<h3 id="n-1与n-new-Number-1-区别"><a href="#n-1与n-new-Number-1-区别" class="headerlink" title="n=1与n = new Number(1)区别"></a>n=1与n = new Number(1)区别</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>是一个基本类型<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n = <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>)</span><br></pre></td></tr></table></figure></p>
+<p>创建一个Number对象<br><br>所以为什么一个基本类型可以使用 &ensp;.&ensp; 属性呢？<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">1</span> </span><br><span class="line">n.toString()  <span class="comment">//这时会创造一个临时的对象tamp里面有各种属性，这句执行完后，tamp消失</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">1</span></span><br><span class="line">n.xxx = <span class="number">2</span>  <span class="comment">//不会报错,这句执行完后，tamp消失</span></span><br><span class="line">n.xxx <span class="comment">//undefined    读取不到</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2018/06/08/5b19d9c74a115.png" alt="tamp.png"><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">o1 = &#123;&#125;</span><br><span class="line">o2 =  <span class="keyword">new</span> object &#123;&#125;<span class="comment">//没有区别，但不完全相等</span></span><br><span class="line">o1 === o2  <span class="comment">// false   地址不一样</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="proto-与-prototype"><a href="#proto-与-prototype" class="headerlink" title="__proto__ 与 prototype"></a>__proto__ 与 prototype</h3><ul>
+<li><p>每个对象都具有一个名为__proto__的属性；</p>
+</li>
+<li><p>每个构造函数（构造函数标准为大写开头，如Function()，Object()等等JS中自带的构造函数，以及自己创建的）都具有一个名为prototype的方法（注意：既然是方法，那么就是一个对象（JS中函数同样是对象），所以prototype同样带有__proto__属性）；</p>
+</li>
+<li><p><strong>每个对象的__proto__属性指向自身构造函数的prototype；</strong></p>
+</li>
+<li><p>Function的__proto__指向其构造函数Function的prototype；</p>
+</li>
+<li><p>Object作为一个构造函数(是一个函数对象!!函数对象!!),所以他的__proto__指向Function.prototype；</p>
+</li>
+<li><p>Function.prototype的__proto__指向其构造函数Object的prototype；</p>
+</li>
+<li><p>Object.prototype的__proto__指向null（尽头）</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创造了一个函数Fn</span></span><br><span class="line"><span class="comment">//这个函数由Function生成（Function作为构造函数）</span></span><br><span class="line"><span class="keyword">var</span> fn=<span class="keyword">new</span> Fun()</span><br><span class="line"><span class="comment">//创建了一个函数fn</span></span><br><span class="line"><span class="comment">//这个函数由Fn生成（Fn作为构造函数)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">fn.__proto__===Fun.prototype    <span class="comment">//true</span></span><br><span class="line"><span class="comment">//fn的__proto__指向其构造函数Fun的prototype</span></span><br><span class="line">Fun.__proto__===<span class="built_in">Function</span>.prototype        <span class="comment">//true</span></span><br><span class="line"><span class="comment">//Fun的__proto__指向其构造函数Function的prototype</span></span><br><span class="line"><span class="built_in">Function</span>.__proto__===<span class="built_in">Function</span>.prototype    <span class="comment">//true</span></span><br><span class="line"><span class="comment">//Function的__proto__指向其构造函数Function的prototype</span></span><br><span class="line"><span class="comment">//构造函数自身是一个函数，他是被自身构造的</span></span><br><span class="line"><span class="built_in">Function</span>.prototype.__proto__===<span class="built_in">Object</span>.prototype    <span class="comment">//true</span></span><br><span class="line"><span class="comment">//Function.prototype的__proto__指向其构造函数Object的prototype</span></span><br><span class="line"><span class="comment">//Function.prototype是一个对象,同样是一个方法,方法是函数,所以它必须有自己的构造函数也就是Object</span></span><br><span class="line">Fun.prototype.__proto__===<span class="built_in">Object</span>.prototype        <span class="comment">//true</span></span><br><span class="line"><span class="comment">//与上条相同</span></span><br><span class="line"><span class="comment">//此处可以知道一点,所有构造函数的的prototype方法的__proto__都指向Object.prototype(除了Object.prototype自身)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.__proto__===<span class="built_in">Function</span>.prototype        <span class="comment">//true</span></span><br><span class="line"><span class="comment">//Object作为一个构造函数(是一个函数对象!!函数对象!!),所以他的__proto__指向Function.prototype</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.__proto__===<span class="literal">null</span>       <span class="comment">//true</span></span><br><span class="line"><span class="comment">//Object.prototype作为一切的源头,他的__proto__是null</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//下面是一个新的,额外的例子</span></span><br><span class="line"><span class="keyword">var</span> obj=&#123;&#125;</span><br><span class="line"><span class="comment">//创建了一个obj</span></span><br><span class="line">obj.__proto__===<span class="built_in">Object</span>.prototype       <span class="comment">//true</span></span><br><span class="line"><span class="comment">//obj作为一个直接以字面量创建的对象，所以obj__proto__直接指向了Object.prototype，而不需要经过Function了！</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2018/06/08/5b19e5a89ddb3.png" alt="__proto__ 与 prototype.png"></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/proto-与prototype/">__proto__与prototype</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://yoursite.com/2018/06/08/原型与原型链/" data-title="原型与原型链 | wwj-blog" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2018/06/06/JS里的数据类型转换/"  title="JS里的数据类型转换">
+ <strong>NEXT:</strong><br/> 
+ <span>JS里的数据类型转换
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#全局对象-window"><span class="toc-number">1.</span> <span class="toc-text">全局对象 window</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#n-1与n-new-Number-1-区别"><span class="toc-number">2.</span> <span class="toc-text">n=1与n = new Number(1)区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#proto-与-prototype"><span class="toc-number">3.</span> <span class="toc-text">__proto__ 与 prototype</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/HTML-标签-元素/" title="HTML 标签 元素">HTML 标签 元素<sup>1</sup></a></li>
+		
+			<li><a href="/tags/HTTP/" title="HTTP">HTTP<sup>1</sup></a></li>
+		
+			<li><a href="/tags/proto-与-prototype/" title="__proto__ 与 prototype">__proto__ 与 prototype<sup>0</sup></a></li>
+		
+			<li><a href="/tags/proto-与prototype/" title="__proto__与prototype">__proto__与prototype<sup>1</sup></a></li>
+		
+			<li><a href="/tags/css/" title="css">css<sup>1</sup></a></li>
+		
+			<li><a href="/tags/css-布局/" title="css 布局">css 布局<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/命令/" title="命令">命令<sup>1</sup></a></li>
+		
+			<li><a href="/tags/堆排序/" title="堆排序">堆排序<sup>1</sup></a></li>
+		
+			<li><a href="/tags/排序流程图/" title="排序流程图">排序流程图<sup>1</sup></a></li>
+		
+			<li><a href="/tags/数据类型/" title="数据类型">数据类型<sup>1</sup></a></li>
+		
+			<li><a href="/tags/标签/" title="标签">标签<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 白日不到处 <br/>
+			青春恰自来</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		<a href="http://weibo.com/5634012878" target="_blank" title="weibo"></a>
+		
+		
+		
+		<a href="https://github.com/wjiangwang/wjiangwang.github.io" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2018 
+		
+		<a href="http://yoursite.com" target="_blank" title="wwj">wwj</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>
