@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -107,7 +107,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/08/16/Cache-Control（缓存）/index.html">
 <meta property="og:site_name" content="wwj-blog">
 <meta property="og:description" content="性能优化想让哪个文件被缓存（如js文件、css文件等），就在服务器里的路由里写上1response.setHeader(&apos;Cache-Control&apos;, &apos;max-age=30&apos;) 这样每次浏览器请求完这个url后的30s内，都不会再请求这个文件，提升了速度。但只要改变url，文件就会被再请求一次 html不要设置Cache-Control因为html若设置了缓存，浏览器就不会向服务器发送任何请求">
-<meta property="og:locale" content="default">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-08-16T12:29:12.980Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cache-Control（缓存）">
@@ -126,7 +126,7 @@
     motion: true,
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -164,7 +164,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -212,7 +212,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            首页
           </a>
         </li>
       
@@ -222,7 +222,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            归档
           </a>
         </li>
       
@@ -232,7 +232,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            Tags
+            标签
           </a>
         </li>
       
@@ -296,9 +296,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-16T20:27:19+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-16T20:27:19+08:00">
                 2018-08-16
               </time>
             
@@ -327,9 +327,9 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Words count in article</span>
+                  <span class="post-meta-item-text">字数统计</span>
                 
-                <span title="Words count in article">
+                <span title="字数统计">
                   324
                 </span>
               
@@ -343,9 +343,9 @@
                   <i class="fa fa-clock-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Reading time</span>
+                  <span class="post-meta-item-text">阅读时长</span>
                 
-                <span title="Reading time">
+                <span title="阅读时长">
                   1
                 </span>
               
@@ -369,7 +369,7 @@
       
         <h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><p>想让哪个文件被缓存（如js文件、css文件等），就在服务器里的路由里写上<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.setHeader(<span class="string">'Cache-Control'</span>, <span class="string">'max-age=30'</span>)</span><br></pre></td></tr></table></figure></p>
 <p>这样每次浏览器请求完这个url后的30s内，都不会再请求这个文件，提升了速度。<br>但只要改变url，文件就会被再请求一次</p>
-<h2 id="html不要设置Cache-Control"><a href="#html不要设置Cache-Control" class="headerlink" title="html不要设置Cache-Control"></a>html不要设置Cache-Control</h2><p>因为html若设置了缓存，浏览器就不会向服务器发送任何请求，这样用户无法获取到任何更新后的版本。<br>若是css、js这类文件更新了，可以通过改变url来使用户获取到更新，例如<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"main.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span>  <span class="comment">//第一个版本</span></span><br><span class="line"></span><br><span class="line">&lt;script src=<span class="string">"main.js?v=2"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span>  <span class="comment">//第二个版本，改变url，加了个查询参数，于是浏览器就会重新请求文件了</span></span><br><span class="line"></span><br><span class="line">&lt;script src=<span class="string">"main.js?v=3"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span>   <span class="comment">//第三个版本</span></span><br><span class="line"></span><br><span class="line">&lt;script src=<span class="string">"main.js?随机数"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span>   <span class="comment">//以后的版本</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="html不要设置Cache-Control"><a href="#html不要设置Cache-Control" class="headerlink" title="html不要设置Cache-Control"></a>html不要设置Cache-Control</h2><p>因为html若设置了缓存，浏览器就不会向服务器发送任何请求，这样用户无法获取到任何更新后的版本。<br>若是css、js这类文件更新了，可以通过改变url来使用户获取到更新，例如<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"main.js"</span>&gt;&lt;/script&gt;  <span class="comment">//第一个版本</span></span><br><span class="line"></span><br><span class="line">&lt;script src=<span class="string">"main.js?v=2"</span>&gt;&lt;/script&gt;  <span class="comment">//第二个版本，改变url，加了个查询参数，于是浏览器就会重新请求文件了</span></span><br><span class="line"></span><br><span class="line">&lt;script src=<span class="string">"main.js?v=3"</span>&gt;&lt;/script&gt;   <span class="comment">//第三个版本</span></span><br><span class="line"></span><br><span class="line">&lt;script src=<span class="string">"main.js?随机数"</span>&gt;&lt;/script&gt;   <span class="comment">//以后的版本</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="Expires-旧版本的缓存"><a href="#Expires-旧版本的缓存" class="headerlink" title="Expires(旧版本的缓存)"></a>Expires(旧版本的缓存)</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.setHeader(<span class="string">'Expirse'</span>, <span class="string">'Feb 2018 14:04:04.....'</span>)</span><br></pre></td></tr></table></figure>
 <p>区别：Expires设置的是日期，而且是根据本地时间判断的，若是用户的本地时间有误，就会有bug，所以现在都用Cache-Control，若两个都设置了会优先使用Cache-Control，因为这是新版的</p>
 
@@ -462,10 +462,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            站点概览
           </li>
         </ul>
       
@@ -486,7 +486,7 @@
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
                 <span class="site-state-item-count">18</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
@@ -499,7 +499,7 @@
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">11</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">标签</span>
               
             </div>
           
@@ -552,6 +552,40 @@
 
         
         
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              推荐阅读
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="wangdoc.com/javascript/" title="JavaScript教程" target="_blank">JavaScript教程</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.zhangxinxu.com/" title="张鑫旭" target="_blank">张鑫旭</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.alloyteam.com/nav/" title="Web前端导航" target="_blank">Web前端导航</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://cndevdocs.com/" title="中文参考手册" target="_blank">中文参考手册</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://ife.baidu.com/" title="百度前端技术学院" target="_blank">百度前端技术学院</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://wf.uisdc.com/cn/" title="google前端开发基础" target="_blank">google前端开发基础</a>
+                </li>
+              
+            </ul>
+          </div>
+        
 
         
 
@@ -600,11 +634,11 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
-  Theme -
+  主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>
@@ -747,6 +781,11 @@
   
 
   
+
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
 
 </body>
 </html>
