@@ -1,0 +1,389 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>css学习笔记 | wwj-blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="wwj">
+    
+    <meta name="description" content="引入css四种方式：
+内联       
+style标签          
+css link  &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;./a.css&amp;quot;&amp;gt;     
+@import url()
+几种元素
+float: 指定一个元">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="wwj-blog" title="wwj-blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="wwj-blog">wwj-blog</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/05/17/css学习笔记/" title="css学习笔记" itemprop="url">css学习笔记</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://yoursite.com" title="wwj">wwj</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2018-05-17T04:28:55.000Z" itemprop="datePublished">2018-05-17</time>
+    Updated:<time datetime="2018-05-19T16:17:43.120Z" itemprop="dateModified">2018-05-20</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#引入css四种方式："><span class="toc-number">1.</span> <span class="toc-text">引入css四种方式：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#几种元素"><span class="toc-number">2.</span> <span class="toc-text">几种元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档流（normal-flow）"><span class="toc-number">3.</span> <span class="toc-text">文档流（normal flow）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内联元素和块级元素的主要区别"><span class="toc-number">4.</span> <span class="toc-text">内联元素和块级元素的主要区别</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#内联元素"><span class="toc-number">4.1.</span> <span class="toc-text">内联元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#块级元素"><span class="toc-number">4.2.</span> <span class="toc-text">块级元素</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#背景图"><span class="toc-number">5.</span> <span class="toc-text">背景图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#居中"><span class="toc-number">6.</span> <span class="toc-text">居中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#画一个三角形"><span class="toc-number">7.</span> <span class="toc-text">画一个三角形</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#绝对定位"><span class="toc-number">7.1.</span> <span class="toc-text">绝对定位</span></a></li></ol></li></ol>
+		</div>
+		
+		<h3 id="引入css四种方式："><a href="#引入css四种方式：" class="headerlink" title="引入css四种方式："></a>引入css四种方式：</h3><ul>
+<li>内联       </li>
+<li>style标签          </li>
+<li>css link  <code>&lt;link rel=&quot;stylesheet&quot; href=&quot;./a.css&quot;&gt;</code>     </li>
+<li><p>@import url()</p>
+<h3 id="几种元素"><a href="#几种元素" class="headerlink" title="几种元素"></a>几种元素</h3></li>
+<li><p>float: 指定一个元素应沿其容器的左侧或右侧放置， <code>clearfix</code> 添加在所有浮动元素爸爸身上</p>
+</li>
+<li><p>Hover: 当鼠标悬浮时</p>
+</li>
+<li><p>display: block  元素生成一个块元素盒。  inline-block该元素生成一个块状盒，该块状盒随着周围内容流动，如同它是一个单独的行内盒子（表现更像是一个被替换的元素）</p>
+</li>
+<li><p>margin:给定元素设置所有四个（上下左右）方向的外边距属性。这是四个外边距属性设置的简写。可以为负，</p>
+</li>
+<li><p>padding:属性设置一个元素的内边距，padding 区域指一个元素的内容和其边界之间的空间，该属性不能为负值。</p>
+</li>
+<li><p>border：一个用于设置各种单独的边界属性的简写属性。border调试大法 <code>border: 1px solid red;</code></p>
+</li>
+<li><p>inherit：继承关键字，使得元素获取其父元素的计算值(computed value )。</p>
+<h3 id="文档流（normal-flow）"><a href="#文档流（normal-flow）" class="headerlink" title="文档流（normal flow）"></a>文档流（normal flow）</h3></li>
+<li>文档流：文档内元素流动的方向，在文档流中, 元素按照其在 HTML 中的先后位置至上而下布局, 在这个过程中, 行内元素水平排列, 直到当行被占满然后换行; 块级元素则会被渲染为完整的一个新行.</li>
+<li><p>脱离文档流：1.浮动机制2.绝对定位</p>
+</li>
+<li><p>div 高度由其内部文档流元素的高度总和决定</p>
+<h3 id="内联元素和块级元素的主要区别"><a href="#内联元素和块级元素的主要区别" class="headerlink" title="内联元素和块级元素的主要区别"></a>内联元素和块级元素的主要区别</h3><h4 id="内联元素"><a href="#内联元素" class="headerlink" title="内联元素"></a>内联元素</h4><p>1.独占一行,默认情况下，其宽度自动填满其父元素宽度<br>2.可以设置width，height属性<br>3.可以设置margin和padding属性<br>4.对应于     display:block</p>
+<h4 id="块级元素"><a href="#块级元素" class="headerlink" title="块级元素"></a>块级元素</h4><p>1.相邻的行内元素会排列在同一行里，直到一行排不下，才会换行，其宽度随元素的内容而变化<br>2.行内元素设置width，height属性无效<br>3.行内元素起边距作用的只有margin-left、margin-right、padding-left、padding-right，其它属性不会起边距效果。</p>
+</li>
+</ul>
+<ol start="4">
+<li>对应于    display:inline；<h3 id="背景图"><a href="#背景图" class="headerlink" title="背景图"></a>背景图</h3></li>
+</ol>
+<ul>
+<li><p>Background-position: center center; 背景图 ：水平 垂直 居中；</p>
+</li>
+<li><p>background-size: cover;  背景图自适应</p>
+</li>
+<li><p>给背景图加上面具 ：background-color: rgba(0,0, 0, 0.65);</p>
+</li>
+<li><p>rgba(red, green, blue, Alpha透明度。取值0~1之间。)</p>
+<h3 id="居中"><a href="#居中" class="headerlink" title="居中"></a>居中</h3><p>对于一个div，如果他有一个宽度  <code>Margin-left：auto；  Margin-right：auto;</code></p>
+<h3 id="画一个三角形"><a href="#画一个三角形" class="headerlink" title="画一个三角形"></a>画一个三角形</h3><p>1.span里不放DIV<br>2.示例代码<br>  {</p>
+<pre><code>border: 10px solid transparent;
+width:0px;
+border-left-color: #e6686a;
+border-top-width: 0px;
+</code></pre><p>  }</p>
+<h4 id="绝对定位"><a href="#绝对定位" class="headerlink" title="绝对定位"></a>绝对定位</h4></li>
+<li>子元素上  <code>position: absolute;</code></li>
+<li>父元素上    <code>position: relative;</code></li>
+<li><p>子元素相对于父元素定位</p>
+</li>
+<li><p>position： fixed；脱离文档流,相对于屏幕固定</p>
+</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/css/">css</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://yoursite.com/2018/05/17/css学习笔记/" data-title="css学习笔记 | wwj-blog" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2018/05/19/CSS布局笔记/" title="CSS布局笔记">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  CSS布局笔记</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2018/05/14/HTML常用标签/"  title="HTML常用标签">
+ <strong>NEXT:</strong><br/> 
+ <span>HTML常用标签
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#引入css四种方式："><span class="toc-number">1.</span> <span class="toc-text">引入css四种方式：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#几种元素"><span class="toc-number">2.</span> <span class="toc-text">几种元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档流（normal-flow）"><span class="toc-number">3.</span> <span class="toc-text">文档流（normal flow）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内联元素和块级元素的主要区别"><span class="toc-number">4.</span> <span class="toc-text">内联元素和块级元素的主要区别</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#内联元素"><span class="toc-number">4.1.</span> <span class="toc-text">内联元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#块级元素"><span class="toc-number">4.2.</span> <span class="toc-text">块级元素</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#背景图"><span class="toc-number">5.</span> <span class="toc-text">背景图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#居中"><span class="toc-number">6.</span> <span class="toc-text">居中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#画一个三角形"><span class="toc-number">7.</span> <span class="toc-text">画一个三角形</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#绝对定位"><span class="toc-number">7.1.</span> <span class="toc-text">绝对定位</span></a></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/HTML-标签-元素/" title="HTML 标签 元素">HTML 标签 元素<sup>1</sup></a></li>
+		
+			<li><a href="/tags/HTTP/" title="HTTP">HTTP<sup>1</sup></a></li>
+		
+			<li><a href="/tags/proto-与prototype/" title="__proto__与prototype">__proto__与prototype<sup>1</sup></a></li>
+		
+			<li><a href="/tags/css/" title="css">css<sup>1</sup></a></li>
+		
+			<li><a href="/tags/css-布局/" title="css 布局">css 布局<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/命令/" title="命令">命令<sup>1</sup></a></li>
+		
+			<li><a href="/tags/堆排序/" title="堆排序">堆排序<sup>1</sup></a></li>
+		
+			<li><a href="/tags/排序流程图/" title="排序流程图">排序流程图<sup>1</sup></a></li>
+		
+			<li><a href="/tags/数据类型/" title="数据类型">数据类型<sup>1</sup></a></li>
+		
+			<li><a href="/tags/标签/" title="标签">标签<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 白日不到处 <br/>
+			青春恰自来</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		<a href="http://weibo.com/5634012878" target="_blank" title="weibo"></a>
+		
+		
+		
+		<a href="https://github.com/wjiangwang/wjiangwang.github.io" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2018 
+		
+		<a href="http://yoursite.com" target="_blank" title="wwj">wwj</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,383 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>HTML常用标签 | wwj-blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="wwj">
+    
+    <meta name="description" content="iframe
+&amp;lt;iframe&amp;gt; 表示嵌套的浏览上下文，有效地将另一个HTML页面嵌入到当前页面中
+常见的属性有name嵌入的浏览上下文（框架）的名称。该名称可以用作&amp;lt;a&amp;gt;标签，&amp;lt;form&amp;gt;标签的target属性值，或&amp;lt;input&amp;gt; 标签和 &amp;lt;bu">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="wwj-blog" title="wwj-blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="wwj-blog">wwj-blog</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/05/14/HTML常用标签/" title="HTML常用标签" itemprop="url">HTML常用标签</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://yoursite.com" title="wwj">wwj</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2018-05-14T08:10:36.000Z" itemprop="datePublished">2018-05-14</time>
+    Updated:<time datetime="2018-05-14T14:57:14.298Z" itemprop="dateModified">2018-05-14</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#iframe"><span class="toc-number">1.</span> <span class="toc-text">iframe</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#a"><span class="toc-number">2.</span> <span class="toc-text">a</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#form"><span class="toc-number">3.</span> <span class="toc-text">form</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#input"><span class="toc-number">4.</span> <span class="toc-text">input</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#button"><span class="toc-number">5.</span> <span class="toc-text">button</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#select"><span class="toc-number">6.</span> <span class="toc-text">select</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#table"><span class="toc-number">7.</span> <span class="toc-text">table</span></a></li></ol>
+		</div>
+		
+		<h2 id="iframe"><a href="#iframe" class="headerlink" title="iframe"></a>iframe</h2><ul>
+<li><code>&lt;iframe&gt;</code> 表示嵌套的浏览上下文，有效地将另一个HTML页面嵌入到当前页面中</li>
+<li>常见的属性有<code>name</code>嵌入的浏览上下文（框架）的名称。该名称可以用作<code>&lt;a&gt;</code>标签，<code>&lt;form&gt;</code>标签的target属性值，或<code>&lt;input&gt;</code> 标签和 <code>&lt;button&gt;</code>标签的formtaget属性值。</li>
+<li><code>src=&quot;&quot;</code>可以写相对路径src=”./index2.html”</li>
+</ul>
+<ul>
+<li><code>&lt;iframesrc=&quot;https://www.baidu.com&quot; name=xxx frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;</code>，<code>frameborder=&quot;0&quot;</code>表示没有边框。</li>
+</ul>
+<ul>
+<li>与<code>&lt;a&gt;</code>一起用<br>  <code>&lt;iframe src=&quot;#&quot; name=xxx&gt;&lt;/iframe&gt;&lt;a herf=&quot;https://www.baidu.com&quot; tarage=xxx&gt;baidu&lt;a&gt;</code><h2 id="a"><a href="#a" class="headerlink" title="a"></a>a</h2><code>&lt;a&gt;</code>元素  (或锚元素) 可以创建一个到其他网页、文件、同一页面内的位置、电子邮件地址或任何其他URL的超链接。</li>
+<li>跳转页面,发起的是GET请求<br><code>target</code>属性</li>
+<li><code>&lt;a href=&quot;http://qq.com&quot; target=&quot;_blank&quot;&gt;QQ&lt;/a&gt;</code>在新页面打开链接</li>
+<li><code>&lt;a href=&quot;http://qq.com&quot; target=&quot;_self&quot;&gt;QQ&lt;/a&gt;</code>在当前页面打开</li>
+<li><code>&lt;a href=&quot;http://qq.com&quot; target=&quot;_parent&quot;&gt;QQ&lt;/a&gt;</code>在父级页面打开</li>
+<li><code>&lt;a href=&quot;http://qq.com&quot; target=&quot;_top&quot;&gt;QQ&lt;/a&gt;</code>在顶层页面打开<br><code>download</code> 属性</li>
+<li>此属性指示浏览器下载URL而不是导航到URL，因此将提示用户将其保存为本地文件。<br><code>href</code>属性</li>
+<li>这是一个必需属性为锚定义一个超文本链接来源。这表示链接目标的URL或URL片段。URL片段是由一个hash符号（＃），它指定一个内部目标在当前文档中的位置（ID）开头的名字。URL不限于网页（HTTP）的文件。URL可能使用浏览器所支持的任何协议。例如，文件，FTP，大多数用户代理mailto工作。可以使用 href=”#top” 或者 href=”#” 链接返回到页面顶部。这种行为在HTML5上被指定。</li>
+<li>javascript伪协议<code>&lt;a href=&quot;javascript:;&quot; target=&quot;_blank&quot;&gt;QQ&lt;/a&gt;</code>点击QQ<code>&lt;a&gt;</code>标签无反应</li>
+</ul>
+<h2 id="form"><a href="#form" class="headerlink" title="form"></a>form</h2><p><code>&lt;form&gt;</code> 元素 表示了文档中的一个区域，这个区域包含有交互控制元件，用来向web服务器提交信息。</p>
+<ul>
+<li>跳转页面,发起的是POST请求</li>
+<li><code>method=&quot;POST&quot;`</code>method=”GET”`浏览器使用这种 HTTP 方式来提交 form</li>
+<li>需要有<code>&lt;input&gt;</code>按钮用于提交表单<br>  <form action="index2.html" method="POST"><pre><code>&lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;
+&lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;
+&lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;
+</code></pre>  </form><br><code>method=&quot;GET&quot;</code>会将username&amp;password放入查询参数。</li>
+<li>也有<code>target</code>属性<h2 id="input"><a href="#input" class="headerlink" title="input"></a>input</h2><code>&lt;input&gt;</code> 元素用于为基于Web的表单创建交互式控件，以便接受来自用户的数据。</li>
+<li><code>button</code>：无缺省行为按钮。</li>
+<li><p><code>checkbox</code>： 复选框。必须使用 value 属性定义此控件被提交时的值。使用 checked 属性指示控件是否被选择。也可以使用 indeterminate 指示复选框在一种不确定状态（大多数平台上，显示为一条穿过复选框的水平线）。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"lovefruits"</span> <span class="attr">value</span>=<span class="string">"orange"</span>&gt;</span>橘子<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"lovefruits"</span> <span class="attr">value</span>=<span class="string">"Banana"</span>&gt;</span>香蕉<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"lovefruits"</span> <span class="attr">value</span>=<span class="string">"apple"</span>&gt;</span>苹果<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"lovefruits"</span> <span class="attr">value</span>=<span class="string">"watermelon"</span>&gt;</span>西瓜<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>radio</code>：单选按钮。必须使用 value 属性定义此控件被提交时的值。使用checked 必须指示控件是否缺省被选择。在同一个”单选按钮组“中，所有单选按钮的 name 属性使用同一个值； 一个单选按钮组中是，同一时间只有一个单选按钮可以被选择。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"lovefruits"</span> <span class="attr">value</span>=<span class="string">"orange"</span>&gt;</span>橘子<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"lovefruits"</span> <span class="attr">value</span>=<span class="string">"Banana"</span>&gt;</span>香蕉<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"lovefruits"</span> <span class="attr">value</span>=<span class="string">"apple"</span>&gt;</span>苹果<span class="tag">&lt;/<span class="name">label</span>&gt;</span>`</span><br><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"lovefruits"</span> <span class="attr">value</span>=<span class="string">"watermelon"</span>&gt;</span>西瓜<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>password</code>：一个值被遮盖的单行文本字段。使用 maxlength 指定可以输入的值的最大长度 。</p>
+</li>
+<li><code>submit</code>：用于提交表单的按钮。</li>
+<li><code>text</code>：单行字段；换行会将自动从输入的值中移除。<h2 id="button"><a href="#button" class="headerlink" title="button"></a>button</h2><code>&lt;button&gt;</code> 元素表示一个可点击的按钮，可以用在表单或文档其它需要使用简单标准按钮的地方。<br>type的类型有：</li>
+<li><code>submit</code>:  此按钮提交表单数据给服务器。未指定时，此值为默认值，或者如果此属性动态变为空值或无效值。</li>
+<li><code>reset</code>:  此按钮重置所有组件为初始值。</li>
+<li><code>button</code>: 此按钮没有默认行为。它可以有与元素事件相关的客户端脚本，当事件出现时可触发。</li>
+<li><code>menu</code>: 此按钮打开一个由指定<code>&lt;menu&gt;</code>元素进行定义的弹出菜单。<br>value</li>
+<li><p>button的初始值。它定义的值与表单数据的提交按钮相关联。当表单中的数据被提交时，这个值便以参数的形式被递送至服务器。</p>
+<h2 id="select"><a href="#select" class="headerlink" title="select"></a>select</h2><p><code>&lt;select&gt;</code>元素是一种表单控件，可创建选项菜单。菜单内的选项为<code>&lt;option&gt;</code> , 可以由 <code>&lt;optgroup&gt;</code> 元素分组。选项可以被用户预先选择。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">"分组"</span> <span class="attr">id</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"1"</span>&gt;</span>第一组<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"2"</span> <span class="attr">disabled</span>&gt;</span>第二组<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"3"</span> <span class="attr">selected</span>&gt;</span>第三组<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>multiple这个布尔值的属性标记select是否可以多选. 默认是单选.</p>
+</li>
+<li>disabled这个布尔值的属性表明一个用户是否可以操控该表单对象. 如果这个属性没有被明确定义, 则从它的父元素继承, 例如 fieldset; 如果没有父元素设置 disabled 属性, 那么默认该表单对象 enabled.</li>
+</ul>
+<h2 id="table"><a href="#table" class="headerlink" title="table"></a>table</h2><p><code>&lt;table&gt;</code> 元素表示表格数据 — 即通过二维数据表表示的信息。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;table&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">    &lt;td&gt;John&lt;/td&gt;</span><br><span class="line">    &lt;td&gt;Doe&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">    &lt;td&gt;Jane&lt;/td&gt;</span><br><span class="line">    &lt;td&gt;Doe&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/标签/">标签</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://yoursite.com/2018/05/14/HTML常用标签/" data-title="HTML常用标签 | wwj-blog" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2018/05/17/css学习笔记/" title="css学习笔记">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  css学习笔记</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2018/05/13/HTML/"  title="HTML">
+ <strong>NEXT:</strong><br/> 
+ <span>HTML
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#iframe"><span class="toc-number">1.</span> <span class="toc-text">iframe</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#a"><span class="toc-number">2.</span> <span class="toc-text">a</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#form"><span class="toc-number">3.</span> <span class="toc-text">form</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#input"><span class="toc-number">4.</span> <span class="toc-text">input</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#button"><span class="toc-number">5.</span> <span class="toc-text">button</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#select"><span class="toc-number">6.</span> <span class="toc-text">select</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#table"><span class="toc-number">7.</span> <span class="toc-text">table</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/HTML-标签-元素/" title="HTML 标签 元素">HTML 标签 元素<sup>1</sup></a></li>
+		
+			<li><a href="/tags/HTTP/" title="HTTP">HTTP<sup>1</sup></a></li>
+		
+			<li><a href="/tags/proto-与prototype/" title="__proto__与prototype">__proto__与prototype<sup>1</sup></a></li>
+		
+			<li><a href="/tags/css/" title="css">css<sup>1</sup></a></li>
+		
+			<li><a href="/tags/css-布局/" title="css 布局">css 布局<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/命令/" title="命令">命令<sup>1</sup></a></li>
+		
+			<li><a href="/tags/堆排序/" title="堆排序">堆排序<sup>1</sup></a></li>
+		
+			<li><a href="/tags/排序流程图/" title="排序流程图">排序流程图<sup>1</sup></a></li>
+		
+			<li><a href="/tags/数据类型/" title="数据类型">数据类型<sup>1</sup></a></li>
+		
+			<li><a href="/tags/标签/" title="标签">标签<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 白日不到处 <br/>
+			青春恰自来</p>
+	</section>
+	 
+	<div class="social-font clearfix">
+		
+		<a href="http://weibo.com/5634012878" target="_blank" title="weibo"></a>
+		
+		
+		
+		<a href="https://github.com/wjiangwang/wjiangwang.github.io" target="_blank" title="github"></a>
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2018 
+		
+		<a href="http://yoursite.com" target="_blank" title="wwj">wwj</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>
