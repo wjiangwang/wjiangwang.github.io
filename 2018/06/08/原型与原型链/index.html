@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="__proto__与prototype," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="全局对象 windowECMAScript 规定全局对象叫做 global，但是浏览器把 window 作为全局对象（浏览器先存在的） window 就是一个哈希表，有很多属性。window 的属性就是全局变量。 这些全局变量分为两种： 一种是 ECMAScript 规定的123456global.parseIntglobal.parseFloatglobal.Numberglobal.Strin">
+<meta name="keywords" content="__proto__与prototype">
+<meta property="og:type" content="article">
+<meta property="og:title" content="原型与原型链">
+<meta property="og:url" content="http://yoursite.com/2018/06/08/原型与原型链/index.html">
+<meta property="og:site_name" content="wwj-blog">
+<meta property="og:description" content="全局对象 windowECMAScript 规定全局对象叫做 global，但是浏览器把 window 作为全局对象（浏览器先存在的） window 就是一个哈希表，有很多属性。window 的属性就是全局变量。 这些全局变量分为两种： 一种是 ECMAScript 规定的123456global.parseIntglobal.parseFloatglobal.Numberglobal.Strin">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.loli.net/2018/06/08/5b19d9c74a115.png">
+<meta property="og:image" content="https://i.loli.net/2018/06/08/5b19e5a89ddb3.png">
+<meta property="og:updated_time" content="2018-06-08T02:11:20.840Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="原型与原型链">
+<meta name="twitter:description" content="全局对象 windowECMAScript 规定全局对象叫做 global，但是浏览器把 window 作为全局对象（浏览器先存在的） window 就是一个哈希表，有很多属性。window 的属性就是全局变量。 这些全局变量分为两种： 一种是 ECMAScript 规定的123456global.parseIntglobal.parseFloatglobal.Numberglobal.Strin">
+<meta name="twitter:image" content="https://i.loli.net/2018/06/08/5b19d9c74a115.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/08/原型与原型链/"/>
+
+
+
+
+
+  <title>原型与原型链 | wwj-blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">wwj-blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/08/原型与原型链/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wwj">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wwj-blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">原型与原型链</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-08T08:58:46+08:00">
+                2018-06-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="全局对象-window"><a href="#全局对象-window" class="headerlink" title="全局对象 window"></a>全局对象 window</h3><p>ECMAScript 规定全局对象叫做 global，但是浏览器把 window 作为全局对象（浏览器先存在的） <br><br>window 就是一个哈希表，有很多属性。<br><br>window 的属性就是全局变量。<br></p>
+<p>这些全局变量分为两种：<br></p>
+<p><strong>一种是 ECMAScript 规定的</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">global.parseInt</span><br><span class="line">global.parseFloat</span><br><span class="line">global.Number</span><br><span class="line">global.String</span><br><span class="line">global.Boolean</span><br><span class="line">global.Object</span><br></pre></td></tr></table></figure></p>
+<p><strong>一种是浏览器自己加的属性</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.alert</span><br><span class="line"><span class="built_in">window</span>.prompt</span><br><span class="line"><span class="built_in">window</span>.comfirm</span><br><span class="line"><span class="built_in">window</span>.</span><br><span class="line"><span class="built_in">window</span>.console.dir</span><br><span class="line"><span class="built_in">window</span>.document</span><br><span class="line"><span class="built_in">window</span>.document.createElement</span><br><span class="line"><span class="built_in">window</span>.docu</span><br></pre></td></tr></table></figure></p>
+<h3 id="n-1与n-new-Number-1-区别"><a href="#n-1与n-new-Number-1-区别" class="headerlink" title="n=1与n = new Number(1)区别"></a>n=1与n = new Number(1)区别</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>是一个基本类型<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n = <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>)</span><br></pre></td></tr></table></figure></p>
+<p>创建一个Number对象<br><br>所以为什么一个基本类型可以使用 &ensp;.&ensp; 属性呢？<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">1</span> </span><br><span class="line">n.toString()  <span class="comment">//这时会创造一个临时的对象tamp里面有各种属性，这句执行完后，tamp消失</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">1</span></span><br><span class="line">n.xxx = <span class="number">2</span>  <span class="comment">//不会报错,这句执行完后，tamp消失</span></span><br><span class="line">n.xxx <span class="comment">//undefined    读取不到</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2018/06/08/5b19d9c74a115.png" alt="tamp.png"><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">o1 = &#123;&#125;</span><br><span class="line">o2 =  <span class="keyword">new</span> object &#123;&#125;<span class="comment">//没有区别，但不完全相等</span></span><br><span class="line">o1 === o2  <span class="comment">// false   地址不一样</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="proto-与-prototype"><a href="#proto-与-prototype" class="headerlink" title="__proto__ 与 prototype"></a>__proto__ 与 prototype</h3><ul>
+<li><p>每个对象都具有一个名为__proto__的属性；</p>
+</li>
+<li><p>每个构造函数（构造函数标准为大写开头，如Function()，Object()等等JS中自带的构造函数，以及自己创建的）都具有一个名为prototype的方法（注意：既然是方法，那么就是一个对象（JS中函数同样是对象），所以prototype同样带有__proto__属性）；</p>
+</li>
+<li><p><strong>每个对象的__proto__属性指向自身构造函数的prototype；</strong></p>
+</li>
+<li><p>Function的__proto__指向其构造函数Function的prototype；</p>
+</li>
+<li><p>Object作为一个构造函数(是一个函数对象!!函数对象!!),所以他的__proto__指向Function.prototype；</p>
+</li>
+<li><p>Function.prototype的__proto__指向其构造函数Object的prototype；</p>
+</li>
+<li><p>Object.prototype的__proto__指向null（尽头）</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创造了一个函数Fn</span></span><br><span class="line"><span class="comment">//这个函数由Function生成（Function作为构造函数）</span></span><br><span class="line"><span class="keyword">var</span> fn=<span class="keyword">new</span> Fun()</span><br><span class="line"><span class="comment">//创建了一个函数fn</span></span><br><span class="line"><span class="comment">//这个函数由Fn生成（Fn作为构造函数)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">fn.__proto__===Fun.prototype    <span class="comment">//true</span></span><br><span class="line"><span class="comment">//fn的__proto__指向其构造函数Fun的prototype</span></span><br><span class="line">Fun.__proto__===<span class="built_in">Function</span>.prototype        <span class="comment">//true</span></span><br><span class="line"><span class="comment">//Fun的__proto__指向其构造函数Function的prototype</span></span><br><span class="line"><span class="built_in">Function</span>.__proto__===<span class="built_in">Function</span>.prototype    <span class="comment">//true</span></span><br><span class="line"><span class="comment">//Function的__proto__指向其构造函数Function的prototype</span></span><br><span class="line"><span class="comment">//构造函数自身是一个函数，他是被自身构造的</span></span><br><span class="line"><span class="built_in">Function</span>.prototype.__proto__===<span class="built_in">Object</span>.prototype    <span class="comment">//true</span></span><br><span class="line"><span class="comment">//Function.prototype的__proto__指向其构造函数Object的prototype</span></span><br><span class="line"><span class="comment">//Function.prototype是一个对象,同样是一个方法,方法是函数,所以它必须有自己的构造函数也就是Object</span></span><br><span class="line">Fun.prototype.__proto__===<span class="built_in">Object</span>.prototype        <span class="comment">//true</span></span><br><span class="line"><span class="comment">//与上条相同</span></span><br><span class="line"><span class="comment">//此处可以知道一点,所有构造函数的的prototype方法的__proto__都指向Object.prototype(除了Object.prototype自身)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.__proto__===<span class="built_in">Function</span>.prototype        <span class="comment">//true</span></span><br><span class="line"><span class="comment">//Object作为一个构造函数(是一个函数对象!!函数对象!!),所以他的__proto__指向Function.prototype</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.__proto__===<span class="literal">null</span>       <span class="comment">//true</span></span><br><span class="line"><span class="comment">//Object.prototype作为一切的源头,他的__proto__是null</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//下面是一个新的,额外的例子</span></span><br><span class="line"><span class="keyword">var</span> obj=&#123;&#125;</span><br><span class="line"><span class="comment">//创建了一个obj</span></span><br><span class="line">obj.__proto__===<span class="built_in">Object</span>.prototype       <span class="comment">//true</span></span><br><span class="line"><span class="comment">//obj作为一个直接以字面量创建的对象，所以obj__proto__直接指向了Object.prototype，而不需要经过Function了！</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2018/06/08/5b19e5a89ddb3.png" alt="__proto__ 与 prototype.png"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/proto-与prototype/" rel="tag"># __proto__与prototype</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/06/JS里的数据类型转换/" rel="next" title="JS里的数据类型转换">
+                <i class="fa fa-chevron-left"></i> JS里的数据类型转换
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/04/实现一个jQuery的API/" rel="prev" title="实现一个jQuery的API">
+                实现一个jQuery的API <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">wwj</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#全局对象-window"><span class="nav-number">1.</span> <span class="nav-text">全局对象 window</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#n-1与n-new-Number-1-区别"><span class="nav-number">2.</span> <span class="nav-text">n=1与n = new Number(1)区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#proto-与-prototype"><span class="nav-number">3.</span> <span class="nav-text">__proto__ 与 prototype</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wwj</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
