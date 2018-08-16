@@ -62,6 +62,70 @@
 
   <section class="post" itemscope itemprop="blogPost">
   
+    <a href="/2018/08/16/Etag/" title="Etag" itemprop="url">
+  
+    <h1 itemprop="name">Etag</h1>
+    
+     
+           <p itemprop="description" >MD5摘要算法，任何相同文件的MD5值都一样，只要改变了这个文件里的内容，它的MD5值就会变
+ETag在服务器里设置响应头123let string = fs.readFileSync(&#39;./main.js&#39;, &#39;utf8&#39;)let fileMd5 = md5(string);r</p>
+        
+    
+    <time datetime="2018-08-16T12:30:15.000Z" itemprop="datePublished">2018-08-16</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2018/08/16/Cache-Control（缓存）/" title="Cache-Control（缓存）" itemprop="url">
+  
+    <h1 itemprop="name">Cache-Control（缓存）</h1>
+    
+     
+           <p itemprop="description" >性能优化想让哪个文件被缓存（如js文件、css文件等），就在服务器里的路由里写上1response.setHeader(&#39;Cache-Control&#39;, &#39;max-age=30&#39;)
+这样每次浏览器请求完这个url后的30s内，都不会再请求这个文件，提升了速度。但只要改变url，文</p>
+        
+    
+    <time datetime="2018-08-16T12:27:19.000Z" itemprop="datePublished">2018-08-16</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2018/08/16/local Storage和SessionStorage入门/" title="local Storage  SessionStorage入门" itemprop="url">
+  
+    <h1 itemprop="name">local Storage  SessionStorage入门</h1>
+    
+     
+           <p itemprop="description" >localStorage
+
+与cookie不同，请求的时候浏览器不会带上localStorage
+而且每个域名localStorage最大存储量5Mb左右，cookie只有4k左右
+而且localStorage理论上不会过期，除非清理缓存
+所以持续化存东西的时候用localSto</p>
+        
+    
+    <time datetime="2018-08-16T12:18:18.000Z" itemprop="datePublished">2018-08-16</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/2018/08/16/cookie和session/" title="cookie和session" itemprop="url">
+  
+    <h1 itemprop="name">cookie和session</h1>
+    
+     
+           <p itemprop="description" >Cookie1、服务器通过 Set-Cookie 头给客户端一串字符串4、客户端每次访问相同域名的网页时 ， 必须带上这段字符串3、客户端要在一段时间内保存这个 Cookie4、前端不要读写 cookie，用 local sortage
+cookie 可以在后台更改保存时间set</p>
+        
+    
+    <time datetime="2018-08-16T11:54:23.000Z" itemprop="datePublished">2018-08-16</time>
+  </a>
+</section>
+
+  <section class="post" itemscope itemprop="blogPost">
+  
     <a href="/2018/07/21/知识点小结/" title="知识点小结" itemprop="url">
   
     <h1 itemprop="name">知识点小结</h1>
@@ -149,72 +213,6 @@ typeof 确定类型1234typeof 123 // &#34;number&#34;typeof &#39;123&#39; // &#3
         
     
     <time datetime="2018-05-24T12:34:52.000Z" itemprop="datePublished">2018-05-24</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2018/05/24/堆排序的思路/" title="堆排序的思路" itemprop="url">
-  
-    <h1 itemprop="name">堆排序的思路</h1>
-    
-     
-           <p itemprop="description" >堆排序思路
-
-&amp;emsp;&amp;emsp;每次都取最大堆堆顶的元素，将其放在序列最后面，然后将剩余的元素重新调整为最大堆，依次类推，最终得到排序的序列。1.把数组依次放入一个完全二叉树中。2.从最后一个非叶子节点（第4层最后一个点）开始，调整成最大堆。下方是8个最大堆。3.继续往上以</p>
-        
-    
-    <time datetime="2018-05-24T10:45:11.000Z" itemprop="datePublished">2018-05-24</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2018/05/19/CSS布局笔记/" title="CSS布局笔记" itemprop="url">
-  
-    <h1 itemprop="name">CSS布局笔记</h1>
-    
-     
-           <p itemprop="description" >左右布局 使用float，在子元素上使用float：left;在父元素上加class = clearfix用于清除浮动 12345.clearfix::after&amp;#123;    content: &#39;&#39;;    display: block;    clear: both;&amp;#</p>
-        
-    
-    <time datetime="2018-05-19T03:48:01.000Z" itemprop="datePublished">2018-05-19</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2018/05/17/css学习笔记/" title="css学习笔记" itemprop="url">
-  
-    <h1 itemprop="name">css学习笔记</h1>
-    
-     
-           <p itemprop="description" >引入css四种方式：
-内联       
-style标签          
-css link  &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;./a.css&amp;quot;&amp;gt;     
-@import url()
-几种元素
-fl</p>
-        
-    
-    <time datetime="2018-05-17T04:28:55.000Z" itemprop="datePublished">2018-05-17</time>
-  </a>
-</section>
-
-  <section class="post" itemscope itemprop="blogPost">
-  
-    <a href="/2018/05/14/HTML常用标签/" title="HTML常用标签" itemprop="url">
-  
-    <h1 itemprop="name">HTML常用标签</h1>
-    
-     
-           <p itemprop="description" >iframe
-&amp;lt;iframe&amp;gt; 表示嵌套的浏览上下文，有效地将另一个HTML页面嵌入到当前页面中
-常见的属性有name嵌入的浏览上下文（框架）的名称。该名称可以用作&amp;lt;a&amp;gt;标签，&amp;lt;form&amp;gt;标签的target属性值，或&amp;lt;input&amp;gt; </p>
-        
-    
-    <time datetime="2018-05-14T08:10:36.000Z" itemprop="datePublished">2018-05-14</time>
   </a>
 </section>
 
