@@ -122,7 +122,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: true,
@@ -370,7 +370,7 @@
 
       
         <h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p><em>2018年8月22日：初步搭建LeanClound 和 七牛云环境，测试admin界面上传七牛云功能正常</em></p>
-<p>  在搭建过程中，使用的是七牛云1.x版本，由于七牛云设置需要<code>uptoken</code>，在本地利用七牛<code>Node.js</code> SDK 构建后端服务返回<code>uptoken</code>，所需要的 <code>accessKey secretKey</code>保留在本地，<strong>切勿</strong>上传至GitHub。<br>共引用如下库<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"../node_modules/leancloud-storage/dist/av-min.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=<span class="string">"../node_modules/qiniu-js/dist/qiniu.min.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=<span class="string">"../node_modules/plupload/js/moxie.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=<span class="string">"../node_modules/plupload/js/plupload.dev.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>  在搭建过程中，使用的是七牛云1.x版本，由于七牛云设置需要<code>uptoken</code>，在本地利用七牛<code>Node.js</code> SDK 构建后端服务返回<code>uptoken</code>，所需要的 <code>accessKey secretKey</code>保留在本地，<strong>切勿</strong>上传至GitHub。<br>共引用如下库<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"../node_modules/leancloud-storage/dist/av-min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script src=<span class="string">"../node_modules/qiniu-js/dist/qiniu.min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script src=<span class="string">"../node_modules/plupload/js/moxie.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script src=<span class="string">"../node_modules/plupload/js/plupload.dev.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
 <p>服务端代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">response.statusCode = <span class="number">200</span>;</span><br><span class="line">response.setHeader(<span class="string">"Content-Type"</span>, <span class="string">"text/json; charset=utf-8"</span>);</span><br><span class="line">response.setHeader(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> config = fs.readFileSync(<span class="string">"xxx.json"</span>);<span class="comment">//存有"accessKey""secretKey"的json文件</span></span><br><span class="line">config=<span class="built_in">JSON</span>.parse(config)</span><br><span class="line"><span class="keyword">let</span>&#123;accessKey,secretKey&#125;=config</span><br><span class="line"><span class="keyword">var</span> mac = <span class="keyword">new</span> qiniu.auth.digest.Mac(accessKey, secretKey);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">    scope: <span class="string">'bucket'</span>,<span class="comment">//项目名称</span></span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">var</span> putPolicy = <span class="keyword">new</span> qiniu.rs.PutPolicy(options);</span><br><span class="line">  <span class="keyword">var</span> uploadToken=putPolicy.uploadToken(mac);</span><br><span class="line"></span><br><span class="line">response.write(<span class="string">`</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">    "uptoken":"<span class="subst">$&#123;uploadToken&#125;</span>"</span></span><br><span class="line"><span class="string">&#125;`</span>);</span><br><span class="line">response.end();</span><br></pre></td></tr></table></figure></p>
 <p>并在<a href="https://github.com/qiniu/js-sdk/tree/1.x" target="_blank" rel="noopener">七牛云配置</a> 中设置相应的路径<code>uptoken_url</code>，同时开启server服务器和自己的页面进行测试。</p>
 <h2 id="管理界面搭建及功能实现"><a href="#管理界面搭建及功能实现" class="headerlink" title="管理界面搭建及功能实现"></a>管理界面搭建及功能实现</h2><ul>
@@ -497,7 +497,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -615,7 +615,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -635,7 +635,7 @@
 </div>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共13.3k字</span>
+  <span class="post-count">博客全站共13.9k字</span>
 </div>
 
 

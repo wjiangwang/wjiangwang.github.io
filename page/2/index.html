@@ -116,7 +116,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: true,
@@ -253,6 +253,183 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/08/原型与原型链/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wwj">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wwj-blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/08/原型与原型链/" itemprop="url">原型与原型链</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-08T08:58:46+08:00">
+                2018-06-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  795
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="全局对象-window"><a href="#全局对象-window" class="headerlink" title="全局对象 window"></a>全局对象 window</h3><p>ECMAScript 规定全局对象叫做 global，但是浏览器把 window 作为全局对象（浏览器先存在的） <br><br>window 就是一个哈希表，有很多属性。<br><br>window 的属性就是全局变量。<br></p>
+<p>这些全局变量分为两种：<br></p>
+<p><strong>一种是 ECMAScript 规定的</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">global.parseInt</span><br><span class="line">global.parseFloat</span><br><span class="line">global.Number</span><br><span class="line">global.String</span><br><span class="line">global.Boolean</span><br><span class="line">global.Object</span><br></pre></td></tr></table></figure></p>
+<p><strong>一种是浏览器自己加的属性</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.alert</span><br><span class="line"><span class="built_in">window</span>.prompt</span><br><span class="line"><span class="built_in">window</span>.comfirm</span><br><span class="line"><span class="built_in">window</span>.</span><br><span class="line"><span class="built_in">window</span>.console.dir</span><br><span class="line"><span class="built_in">window</span>.document</span><br><span class="line"><span class="built_in">window</span>.document.createElement</span><br><span class="line"><span class="built_in">window</span>.docu</span><br></pre></td></tr></table></figure></p>
+<h3 id="n-1与n-new-Number-1-区别"><a href="#n-1与n-new-Number-1-区别" class="headerlink" title="n=1与n = new Number(1)区别"></a>n=1与n = new Number(1)区别</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>是一个基本类型<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n = <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>)</span><br></pre></td></tr></table></figure></p>
+<p>创建一个Number对象<br><br>所以为什么一个基本类型可以使用 &ensp;.&ensp; 属性呢？<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">1</span> </span><br><span class="line">n.toString()  <span class="comment">//这时会创造一个临时的对象tamp里面有各种属性，这句执行完后，tamp消失</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">1</span></span><br><span class="line">n.xxx = <span class="number">2</span>  <span class="comment">//不会报错,这句执行完后，tamp消失</span></span><br><span class="line">n.xxx <span class="comment">//undefined    读取不到</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2018/06/08/5b19d9c74a115.png" alt="tamp.png"><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">o1 = &#123;&#125;</span><br><span class="line">o2 =  <span class="keyword">new</span> object &#123;&#125;<span class="comment">//没有区别，但不完全相等</span></span><br><span class="line">o1 === o2  <span class="comment">// false   地址不一样</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="proto-与-prototype"><a href="#proto-与-prototype" class="headerlink" title="__proto__ 与 prototype"></a>__proto__ 与 prototype</h3><ul>
+<li><p>每个对象都具有一个名为__proto__的属性；</p>
+</li>
+<li><p>每个构造函数（构造函数标准为大写开头，如Function()，Object()等等JS中自带的构造函数，以及自己创建的）都具有一个名为prototype的方法（注意：既然是方法，那么就是一个对象（JS中函数同样是对象），所以prototype同样带有__proto__属性）；</p>
+</li>
+<li><p><strong>每个对象的__proto__属性指向自身构造函数的prototype；</strong></p>
+</li>
+<li><p>Function的__proto__指向其构造函数Function的prototype；</p>
+</li>
+<li><p>Object作为一个构造函数(是一个函数对象!!函数对象!!),所以他的__proto__指向Function.prototype；</p>
+</li>
+<li><p>Function.prototype的__proto__指向其构造函数Object的prototype；</p>
+</li>
+<li><p>Object.prototype的__proto__指向null（尽头）</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fun</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创造了一个函数Fn</span></span><br><span class="line"><span class="comment">//这个函数由Function生成（Function作为构造函数）</span></span><br><span class="line"><span class="keyword">var</span> fn=<span class="keyword">new</span> Fun()</span><br><span class="line"><span class="comment">//创建了一个函数fn</span></span><br><span class="line"><span class="comment">//这个函数由Fn生成（Fn作为构造函数)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">fn.__proto__===Fun.prototype    <span class="comment">//true</span></span><br><span class="line"><span class="comment">//fn的__proto__指向其构造函数Fun的prototype</span></span><br><span class="line">Fun.__proto__===<span class="built_in">Function</span>.prototype        <span class="comment">//true</span></span><br><span class="line"><span class="comment">//Fun的__proto__指向其构造函数Function的prototype</span></span><br><span class="line"><span class="built_in">Function</span>.__proto__===<span class="built_in">Function</span>.prototype    <span class="comment">//true</span></span><br><span class="line"><span class="comment">//Function的__proto__指向其构造函数Function的prototype</span></span><br><span class="line"><span class="comment">//构造函数自身是一个函数，他是被自身构造的</span></span><br><span class="line"><span class="built_in">Function</span>.prototype.__proto__===<span class="built_in">Object</span>.prototype    <span class="comment">//true</span></span><br><span class="line"><span class="comment">//Function.prototype的__proto__指向其构造函数Object的prototype</span></span><br><span class="line"><span class="comment">//Function.prototype是一个对象,同样是一个方法,方法是函数,所以它必须有自己的构造函数也就是Object</span></span><br><span class="line">Fun.prototype.__proto__===<span class="built_in">Object</span>.prototype        <span class="comment">//true</span></span><br><span class="line"><span class="comment">//与上条相同</span></span><br><span class="line"><span class="comment">//此处可以知道一点,所有构造函数的的prototype方法的__proto__都指向Object.prototype(除了Object.prototype自身)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.__proto__===<span class="built_in">Function</span>.prototype        <span class="comment">//true</span></span><br><span class="line"><span class="comment">//Object作为一个构造函数(是一个函数对象!!函数对象!!),所以他的__proto__指向Function.prototype</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.__proto__===<span class="literal">null</span>       <span class="comment">//true</span></span><br><span class="line"><span class="comment">//Object.prototype作为一切的源头,他的__proto__是null</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//下面是一个新的,额外的例子</span></span><br><span class="line"><span class="keyword">var</span> obj=&#123;&#125;</span><br><span class="line"><span class="comment">//创建了一个obj</span></span><br><span class="line">obj.__proto__===<span class="built_in">Object</span>.prototype       <span class="comment">//true</span></span><br><span class="line"><span class="comment">//obj作为一个直接以字面量创建的对象，所以obj__proto__直接指向了Object.prototype，而不需要经过Function了！</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2018/06/08/5b19e5a89ddb3.png" alt="__proto__ 与 prototype.png"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -2016,163 +2193,6 @@ border-top-width: 0px;
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/09/git简单命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wwj">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wwj-blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/09/git简单命令/" itemprop="url">git简单命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-09T15:17:37+08:00">
-                2018-05-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  451
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="git-init"><a href="#git-init" class="headerlink" title="git init"></a>git init</h2><p>Git 使用 <code>git init</code> 命令来初始化一个 Git 仓库，Git 的很多命令都需要在 Git 的仓库中运行，所以 git init 是使用 Git 的第一个命令。在执行完成 git init 命令后，Git 仓库会生成一个 .git 目录，该目录包含了资源的所有元数据，其他的项目目录保持不变<br><img src="http://wwjwwj.oss-cn-beijing.aliyuncs.com/18-5-9/30732083.jpg" alt="git init"></p>
-<ul>
-<li>使用当前目录作为Git仓库，我们只需使它初始化。<code>git init</code>该命令执行完后会在当前目录生成一个 .git 目录。</li>
-<li>使用我们指定目录作为Git仓库。<code>git init newrepo</code>初始化后，会在 newrepo 目录下会出现一个名为 .git 的目录<h2 id="git-add"><a href="#git-add" class="headerlink" title="git add"></a>git add</h2>该命令可将该文件添加到缓存，如我们添加以下两个文件 index.html和css/style.css<br><img src="http://wwjwwj.oss-cn-beijing.aliyuncs.com/18-5-9/8381105.jpg" alt="git add"></li>
-<li>可以一个一个地 add <code>git add index.html</code></li>
-<li>或者一次添加整个目录 <code>git add .</code><h2 id="git-commit-v"><a href="#git-commit-v" class="headerlink" title="git commit -v"></a>git commit -v</h2><img src="http://wwjwwj.oss-cn-beijing.aliyuncs.com/18-5-9/28866872.jpg" alt="git commit"><br>只输入git commit会启动文本编辑器以便输入本次提交的说明。编辑器会显示最后一次运行 git status 的输出，放在注释行里，另外开头还有一空行，供你输入提交说明。 如果想要更详细的对修改了哪些内容的提示，可以用 -v 选项，这会将你所做的改变的 diff 输出放到编辑器中从而使你知道本次提交具体做了哪些修改。退出编辑器时，Git 会丢掉注释行，用你输入提交附带信息生成一次提交。所以，使用git commit -v来提交内容时，会启动文本编辑器要求输入提交说明，此时只需输入说明，然后保存并退出即可，若输入的说明为空，则本次操作不会有结果</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2223,7 +2243,7 @@ border-top-width: 0px;
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2325,7 +2345,7 @@ border-top-width: 0px;
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -2345,7 +2365,7 @@ border-top-width: 0px;
 </div>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共13.3k字</span>
+  <span class="post-count">博客全站共13.9k字</span>
 </div>
 
 
